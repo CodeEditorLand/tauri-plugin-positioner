@@ -16,4 +16,4 @@ thiserror = { workspace = true }
 serde_repr = "0.1"
 
 [features]
-system-tray = [ "tauri/system-tray" ]
+system-tray = ["tauri/system-tray"]
