@@ -7,21 +7,21 @@ import { invoke } from "@tauri-apps/api/tauri";
  * Well known window positions.
  */
 export enum Position {
-	TopLeft = 0,
-	TopRight,
-	BottomLeft,
-	BottomRight,
-	TopCenter,
-	BottomCenter,
-	LeftCenter,
-	RightCenter,
-	Center,
-	TrayLeft,
-	TrayBottomLeft,
-	TrayRight,
-	TrayBottomRight,
-	TrayCenter,
-	TrayBottomCenter,
+  TopLeft = 0,
+  TopRight,
+  BottomLeft,
+  BottomRight,
+  TopCenter,
+  BottomCenter,
+  LeftCenter,
+  RightCenter,
+  Center,
+  TrayLeft,
+  TrayBottomLeft,
+  TrayRight,
+  TrayBottomRight,
+  TrayCenter,
+  TrayBottomCenter,
 }
 
 /**
@@ -31,7 +31,7 @@ export enum Position {
  * @param to The {@link Position} to move to.
  */
 export async function moveWindow(to: Position): Promise<void> {
-	await invoke("plugin:positioner|move_window", {
-		position: to,
-	});
+  await invoke("plugin:positioner|move_window", {
+    position: to,
+  });
 }
