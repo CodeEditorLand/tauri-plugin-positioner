@@ -1,5 +1,15 @@
 {
+<<<<<<< HEAD
 	"name": "tauri-plugin-positioner-api",
+=======
+	"authors": [
+		"Tauri Programme within The Commons Conservancy"
+	],
+	"browser": "dist-js/index.min.js",
+	"dependencies": {
+		"@tauri-apps/api": "2.0.0-rc.5"
+	},
+>>>>>>> 317f35667731840fed8c124d304248c2fbabf130
 	"description": "Position your windows at well-known locations.",
 	"exports": {
 		"browser": "./dist-js/index.min.js",
