@@ -18,18 +18,10 @@ use tauri::{
 	Runtime,
 };
 #[cfg(feature = "system-tray")]
-use tauri::{
-	AppHandle,
-	Manager,
-	PhysicalPosition,
-	PhysicalSize,
-	SystemTrayEvent,
-};
+use tauri::{AppHandle, Manager, PhysicalPosition, PhysicalSize, SystemTrayEvent};
 
 #[cfg(feature = "system-tray")]
-struct Tray(
-	std::sync::Mutex<Option<(PhysicalPosition<f64>, PhysicalSize<f64>)>>,
-);
+struct Tray(std::sync::Mutex<Option<(PhysicalPosition<f64>, PhysicalSize<f64>)>>);
 
 #[cfg(feature = "system-tray")]
 pub fn on_tray_event<R:Runtime>(app:&AppHandle<R>, event:&SystemTrayEvent) {
@@ -48,17 +40,14 @@ pub fn on_tray_event<R:Runtime>(app:&AppHandle<R>, event:&SystemTrayEvent) {
 }
 
 #[tauri::command]
-async fn move_window<R:Runtime>(
-	window:tauri::Window<R>,
-	position:Position,
-) -> Result<()> {
+async fn move_window<R:Runtime>(window:tauri::Window<R>, position:Position) -> Result<()> {
 	window.move_window(position)
 }
 
 /// The Tauri plugin that exposes [`WindowExt::move_window`] to the webview.
 pub fn init<R:Runtime>() -> TauriPlugin<R> {
-	let plugin = plugin::Builder::new("positioner")
-		.invoke_handler(tauri::generate_handler![move_window]);
+	let plugin =
+		plugin::Builder::new("positioner").invoke_handler(tauri::generate_handler![move_window]);
 
 	#[cfg(feature = "system-tray")]
 	let plugin = plugin.setup(|app_handle| {

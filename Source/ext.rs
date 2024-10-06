@@ -76,62 +76,50 @@ impl<R:Runtime> WindowExt for Window<R> {
 			TopLeft => *screen_position,
 			TopRight => {
 				PhysicalPosition {
-					x:screen_position.x
-						+ (screen_size.width - window_size.width),
+					x:screen_position.x + (screen_size.width - window_size.width),
 					y:screen_position.y,
 				}
 			},
 			BottomLeft => {
 				PhysicalPosition {
 					x:screen_position.x,
-					y:screen_size.height
-						- (window_size.height - screen_position.y),
+					y:screen_size.height - (window_size.height - screen_position.y),
 				}
 			},
 			BottomRight => {
 				PhysicalPosition {
-					x:screen_position.x
-						+ (screen_size.width - window_size.width),
-					y:screen_size.height
-						- (window_size.height - screen_position.y),
+					x:screen_position.x + (screen_size.width - window_size.width),
+					y:screen_size.height - (window_size.height - screen_position.y),
 				}
 			},
 			TopCenter => {
 				PhysicalPosition {
-					x:screen_position.x
-						+ ((screen_size.width / 2) - (window_size.width / 2)),
+					x:screen_position.x + ((screen_size.width / 2) - (window_size.width / 2)),
 					y:screen_position.y,
 				}
 			},
 			BottomCenter => {
 				PhysicalPosition {
-					x:screen_position.x
-						+ ((screen_size.width / 2) - (window_size.width / 2)),
-					y:screen_size.height
-						- (window_size.height - screen_position.y),
+					x:screen_position.x + ((screen_size.width / 2) - (window_size.width / 2)),
+					y:screen_size.height - (window_size.height - screen_position.y),
 				}
 			},
 			LeftCenter => {
 				PhysicalPosition {
 					x:screen_position.x,
-					y:screen_position.y + (screen_size.height / 2)
-						- (window_size.height / 2),
+					y:screen_position.y + (screen_size.height / 2) - (window_size.height / 2),
 				}
 			},
 			RightCenter => {
 				PhysicalPosition {
-					x:screen_position.x
-						+ (screen_size.width - window_size.width),
-					y:screen_position.y + (screen_size.height / 2)
-						- (window_size.height / 2),
+					x:screen_position.x + (screen_size.width - window_size.width),
+					y:screen_position.y + (screen_size.height / 2) - (window_size.height / 2),
 				}
 			},
 			Center => {
 				PhysicalPosition {
-					x:screen_position.x
-						+ ((screen_size.width / 2) - (window_size.width / 2)),
-					y:screen_position.y + (screen_size.height / 2)
-						- (window_size.height / 2),
+					x:screen_position.x + ((screen_size.width / 2) - (window_size.width / 2)),
+					y:screen_position.y + (screen_size.height / 2) - (window_size.height / 2),
 				}
 			},
 			#[cfg(feature = "system-tray")]
@@ -162,10 +150,8 @@ impl<R:Runtime> WindowExt for Window<R> {
 			},
 			#[cfg(feature = "system-tray")]
 			TrayRight => {
-				if let (
-					Some((tray_x, tray_y)),
-					Some((tray_width, _tray_height)),
-				) = (tray_position, tray_size)
+				if let (Some((tray_x, tray_y)), Some((tray_width, _tray_height))) =
+					(tray_position, tray_size)
 				{
 					let y = tray_y - window_size.height;
 					// Choose y value based on the target OS
@@ -182,8 +168,7 @@ impl<R:Runtime> WindowExt for Window<R> {
 			},
 			#[cfg(feature = "system-tray")]
 			TrayBottomRight => {
-				if let (Some((tray_x, tray_y)), Some((tray_width, _))) =
-					(tray_position, tray_size)
+				if let (Some((tray_x, tray_y)), Some((tray_width, _))) = (tray_position, tray_size)
 				{
 					PhysicalPosition { x:tray_x + tray_width, y:tray_y }
 				} else {
@@ -192,10 +177,8 @@ impl<R:Runtime> WindowExt for Window<R> {
 			},
 			#[cfg(feature = "system-tray")]
 			TrayCenter => {
-				if let (
-					Some((tray_x, tray_y)),
-					Some((tray_width, _tray_height)),
-				) = (tray_position, tray_size)
+				if let (Some((tray_x, tray_y)), Some((tray_width, _tray_height))) =
+					(tray_position, tray_size)
 				{
 					let x = tray_x + tray_width / 2 - window_size.width / 2;
 					let y = tray_y - window_size.height;
@@ -213,8 +196,7 @@ impl<R:Runtime> WindowExt for Window<R> {
 			},
 			#[cfg(feature = "system-tray")]
 			TrayBottomCenter => {
-				if let (Some((tray_x, tray_y)), Some((tray_width, _))) =
-					(tray_position, tray_size)
+				if let (Some((tray_x, tray_y)), Some((tray_width, _))) = (tray_position, tray_size)
 				{
 					PhysicalPosition {
 						x:tray_x + (tray_width / 2) - (window_size.width / 2),
