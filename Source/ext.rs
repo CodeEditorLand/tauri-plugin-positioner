@@ -49,11 +49,14 @@ impl<R:Runtime> WindowExt for Window<R> {
 		use Position::*;
 
 		let screen = self.current_monitor()?.unwrap();
+
 		let screen_position = screen.position();
+
 		let screen_size = PhysicalSize::<i32> {
 			width:screen.size().width as i32,
 			height:screen.size().height as i32,
 		};
+
 		let window_size = PhysicalSize::<i32> {
 			width:self.outer_size()?.width as i32,
 			height:self.outer_size()?.height as i32,
@@ -181,6 +184,7 @@ impl<R:Runtime> WindowExt for Window<R> {
 					(tray_position, tray_size)
 				{
 					let x = tray_x + tray_width / 2 - window_size.width / 2;
+
 					let y = tray_y - window_size.height;
 					// Choose y value based on the target OS
 					#[cfg(target_os = "windows")]

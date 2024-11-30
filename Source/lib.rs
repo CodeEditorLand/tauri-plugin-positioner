@@ -52,6 +52,7 @@ pub fn init<R:Runtime>() -> TauriPlugin<R> {
 	#[cfg(feature = "system-tray")]
 	let plugin = plugin.setup(|app_handle| {
 		app_handle.manage(Tray(std::sync::Mutex::new(None)));
+
 		Ok(())
 	});
 
