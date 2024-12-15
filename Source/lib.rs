@@ -12,13 +12,13 @@
 mod ext;
 
 pub use ext::*;
-use tauri::{
-	plugin::{self, TauriPlugin},
-	Result,
-	Runtime,
-};
 #[cfg(feature = "system-tray")]
 use tauri::{AppHandle, Manager, PhysicalPosition, PhysicalSize, SystemTrayEvent};
+use tauri::{
+	Result,
+	Runtime,
+	plugin::{self, TauriPlugin},
+};
 
 #[cfg(feature = "system-tray")]
 struct Tray(std::sync::Mutex<Option<(PhysicalPosition<f64>, PhysicalSize<f64>)>>);
